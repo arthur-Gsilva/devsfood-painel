@@ -52,7 +52,7 @@ export const api = {
                 const order: OrderType[] = []
                 const statuses: orderStatusType[] = ['preparing', 'sent', 'delivered']
                 
-                for(let i = 0; 1 < 6; i++){
+                for(let i = 0; i < 6; i++){
                     order.push({
                         id: parseInt('12' + i),
                         status: statuses[Math.floor(Math.random() * 3)],
