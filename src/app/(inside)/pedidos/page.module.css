@@ -1,0 +1,22 @@
+.container{
+    max-width: var(--container);
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.ordersHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputArea{
+    border-bottom: 1px solid var(--main-color);
+    transition: .3s;
+}
+
+.inputArea input{
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+}

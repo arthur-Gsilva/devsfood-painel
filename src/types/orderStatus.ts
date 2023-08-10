@@ -1,0 +1,1 @@
+export type orderStatusType = 'preparing' | 'sent' | 'delivered'
