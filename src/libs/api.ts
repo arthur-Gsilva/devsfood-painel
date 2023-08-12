@@ -1,3 +1,4 @@
+import { categorie } from "@/types/categories"
 import { OrderType } from "@/types/order"
 import { orderStatusType } from "@/types/orderStatus"
 import { Product } from "@/types/product"
@@ -5,8 +6,12 @@ import { Product } from "@/types/product"
 const tempProduct: Product = {
     id: 999,
     image: 'https://saopaulosecreto.com/wp-content/uploads/2022/10/Get-Burger-1240x686.jpg',
-    name: 'burguer king',
+    name: 'burger king',
     price: 35.5,
+    category: {
+        id: 123,
+        name: 'burger'
+    },
     description: 'um burgao legal'
 }
 
@@ -73,6 +78,43 @@ export const api = {
                 resolve(order)
 
             }, 1000)
+        })
+    },
+
+    changeOrderStatus: async (id: number, newStatus: orderStatusType) => {
+        return true
+    },
+
+    getCategories: async (): Promise<categorie[]> => {
+        const list: categorie[] = [
+            {id: 99, name:'burger'},
+            {id: 98, name:'refrigerantes'},
+            {id: 97, name:'doces'},
+        ]
+
+        return new Promise (resolve => {
+            setTimeout(() => {
+                resolve(list)
+            }, 500)
+        })
+    },
+
+    getProducts: async (): Promise<Product[]> => {
+        const list: Product[] = [
+            {...tempProduct, id: 123},
+            {...tempProduct, id: 124},
+            {...tempProduct, id: 125},
+            {...tempProduct, id: 126},
+            {...tempProduct, id: 127},
+            {...tempProduct, id: 128},
+            {...tempProduct, id: 129},
+            {...tempProduct, id: 130},
+        ]
+
+        return new Promise (resolve => {
+            setTimeout(() => {
+                resolve(list)
+            }, 500)
         })
     }
 }

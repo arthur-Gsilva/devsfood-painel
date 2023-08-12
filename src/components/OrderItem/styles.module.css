@@ -1,0 +1,52 @@
+
+
+.orderHeader{
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+}
+
+.orderHeaderInfo p{
+    margin-bottom: 5px;
+}
+
+.orderHeaderInfo button{
+    background: none;
+    border: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+}
+
+.orderID{
+    font-size: 1.4rem;
+}
+
+
+.select{
+    width: 100%;
+    
+}
+
+.select select{
+    width: 100%;
+    background-color: #e4dfdf;
+    padding: 5px;
+}
+
+.orderItems{
+    border: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+.orderItems p{
+   
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}

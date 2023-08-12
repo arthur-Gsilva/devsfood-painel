@@ -20,3 +20,11 @@
     outline: none;
     font-size: 1.2rem;
 }
+
+.orders{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 30px;
+    gap: 20px;
+}
+

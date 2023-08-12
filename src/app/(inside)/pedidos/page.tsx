@@ -1,18 +1,20 @@
 "use client"
 import { OrderType } from '@/types/order'
 import styles from './page.module.css'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, SetStateAction, useEffect, useState } from 'react'
 
 import { AiOutlineSearch } from 'react-icons/ai'
 import { api } from '@/libs/api'
 import { OrderItem } from '@/components/OrderItem'
+import { orderStatusType } from '@/types/orderStatus'
 
 export default function Page() {
 
     const [focused, setFocused] = useState(false)
-    const [inputSearch, setInputSearch] = useState('')
+    const [inputSearch, setInputSearch] = useState<string>('')
 
     const [orders, setOrders] = useState<OrderType[]>([])
+    const [filteredOrders, setFilteredOrders] = useState<OrderType[]>([])
 
     const getOrders = async () => {
         setInputSearch('')
@@ -22,9 +24,33 @@ export default function Page() {
         setOrders(orderList)
     }
 
+    const changeStatus = async (id: number, newStatus: orderStatusType) => {
+        await api.changeOrderStatus(id, newStatus)
+        getOrders()
+    }
+
+    const changeEvent = (e: ChangeEvent<HTMLInputElement>) => {
+        setInputSearch(e.target.value)
+
+        if(e.target.value !== ''){
+
+            const newOrders: OrderType[] = orders.filter((order) =>
+                order.id.toString().includes(e.target.value)
+            )
+
+            setFilteredOrders(newOrders)
+        } else{
+            setFilteredOrders(orders)
+        }
+    }
+
     useEffect(() => {
         getOrders()
     }, [])
+
+    useEffect(() => {
+        setFilteredOrders(orders)
+    }, [orders])
 
     return(
 
@@ -41,7 +67,7 @@ export default function Page() {
                         placeholder='Procure um pedido'
                         onFocus={() => setFocused(true)}
                         onBlur={() => setFocused(false)}
-                        onChange={(e) => setInputSearch(e.target.value)}
+                        onChange={changeEvent}
                         value={inputSearch}
                         
                     />
@@ -50,8 +76,8 @@ export default function Page() {
             </div>
 
             <div className={styles.orders}>
-                {orders.map((item) => (
-                    <OrderItem item={item}/>
+                {filteredOrders.map((item) => (
+                    <OrderItem key={item.id} item={item} onChangeStatus={changeStatus}/>
                 ))}
             </div>
         </div>
