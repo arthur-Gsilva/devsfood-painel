@@ -9,3 +9,35 @@
 .container img{
     width: 150px;
 }
+
+.buttons button{
+    margin: 8px;
+    border: 0;
+    background: 0;
+    font-size: 1.1rem;
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+.smallPrice{
+    display: none;
+}
+
+@media(max-width: 700px){
+    .notInSmall{
+        display: none;
+    }
+    .smallPrice{
+        display: block;
+    }
+}
+
+@media(max-width: 570px){
+    .container img{
+        width: 90px;
+    }
+
+    .container{
+        font-size: .8rem;
+    }
+}

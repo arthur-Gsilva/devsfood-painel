@@ -51,14 +51,14 @@ export default function Produtos () {
             </div>
 
             <div className={styles.productsContent}>
-                <table>
+                <table className={styles.table}>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th className={styles.notInSmall}>ID</th>
                             <th>Imagem</th>
                             <th>Nome</th>
-                            <th>Preço</th>
-                            <th>Categorias</th>
+                            <th className={styles.notInSmall}>Preço</th>
+                            <th className={styles.notInSmall}>Categorias</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
