@@ -5,7 +5,7 @@ import { Product } from "@/types/product"
 
 const tempProduct: Product = {
     id: 999,
-    image: 'https://saopaulosecreto.com/wp-content/uploads/2022/10/Get-Burger-1240x686.jpg',
+    image: 'https://media.istockphoto.com/id/1309352410/pt/foto/cheeseburger-with-tomato-and-lettuce-on-wooden-board.jpg?s=612x612&w=0&k=20&c=NbaTZPOCYyRU37C1PMm0H9ty1Hu9FHS8SUBlUaygpls=',
     name: 'burger king',
     price: 35.5,
     category: {
@@ -115,6 +115,14 @@ export const api = {
             setTimeout(() => {
                 resolve(list)
             }, 500)
+        })
+    },
+
+    deleteProduct: async (id: number): Promise<boolean> => {
+        return new Promise (resolve => {
+            setTimeout(() => {
+                resolve(true)
+            }, 1000)
         })
     }
 }

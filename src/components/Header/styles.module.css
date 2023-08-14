@@ -1,7 +1,5 @@
 .container{
     background-color: var(--main-color);
-    overflow-y: hidden;
-    overflow-x: hidden;
 }
 
 .headerContent{

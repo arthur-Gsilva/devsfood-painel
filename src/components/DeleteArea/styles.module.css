@@ -1,0 +1,26 @@
+.container{
+    background-color: #22222244;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    background-color: #fff;
+    padding: 20px;
+}
+
+.deleteText{
+    margin-bottom: 30px;
+}
+
+.actions{
+    text-align: center;
+}
+
+.actions button{
+    margin-left: 20px;
+    cursor: pointer;
+}

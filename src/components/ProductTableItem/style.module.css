@@ -1,0 +1,11 @@
+.container{
+    background-color: #f8f4f4;
+    transition: .3s;
+}
+.container:hover{
+    background-color: #e2dfdf;
+}
+
+.container img{
+    width: 150px;
+}
