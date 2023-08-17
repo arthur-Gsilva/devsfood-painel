@@ -10,7 +10,7 @@ import { OrderItem } from '@/components/OrderItem'
 import { orderStatusType } from '@/types/orderStatus'
 
 
-import { SkeletonBox } from '@/components/skeletonBox'
+import { SkeletonBox } from '@/components/Skeletons/skeletonBox'
 
 export default function Page() {
 

@@ -19,16 +19,16 @@ export const Header = () => {
                 <nav className={styles.nav} style={{left: openMenu ? '30%' : '100%'}}>
                     <ul className={styles.menuList}>
                         <li className={styles.listItem}>
-                            <Link href={'/pedidos'}>Pedidos</Link>
+                            <Link href={'/pedidos'} onClick={() => setOpenMenu(false)}>Pedidos</Link>
                         </li>
                         <li className={styles.listItem}>
-                            <Link href={'/produtos'}>Produtos</Link>
+                            <Link href={'/produtos'} onClick={() => setOpenMenu(false)}>Produtos</Link>
                         </li>
                         <li className={styles.listItem}>
-                            <Link href={'/categoria'}>Categorias</Link>
+                            <Link href={'/categoria'} onClick={() => setOpenMenu(false)}>Categorias</Link>
                         </li>
                         <li className={styles.listItem}>
-                            <Link href={'/login'}>Sair</Link>
+                            <Link href={'/login'} onClick={() => setOpenMenu(false)}>Sair</Link>
                         </li>
                     </ul>
 

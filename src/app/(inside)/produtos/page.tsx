@@ -7,18 +7,22 @@ import { categorie } from '@/types/categories'
 import { api } from '@/libs/api'
 import { ProductTableItem } from '@/components/ProductTableItem'
 import { DeleteArea } from '@/components/DeleteArea'
+import { SkeletonTable } from '@/components/Skeletons/skeletonTable'
 
 export default function Produtos () {
 
     const [products, setProducts] = useState<Product[]>([])
     const [categories, setCategories] = useState<categorie[]>([])
+    const [loading, setLoading] = useState(false)
 
     const [showDelete, setShowDelete] = useState<boolean>(false)
     const [productToDelete, setProductToDelete] = useState<Product>()
 
     const getProducts = async () => {
+        setLoading(true)
         setProducts(await api.getProducts())
         setCategories(await api.getCategories())
+        setLoading(false)
     }
 
     const editProduct = () => {
@@ -63,16 +67,23 @@ export default function Produtos () {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((item) => (
-                            <ProductTableItem 
-                                key={item.id}
-                                item={item}
-                                onEdit={editProduct}
-                                onDelete={deleteProduct}
-                            />
+                        {!loading &&
+                            products.map((item) => (
+                                <ProductTableItem 
+                                    key={item.id}
+                                    item={item}
+                                    onEdit={editProduct}
+                                    onDelete={deleteProduct}
+                                />
                         ))}
+
                     </tbody>
                 </table>
+
+                {loading &&
+                    <SkeletonTable />
+                }
+                
             </div>
 
             <DeleteArea 
