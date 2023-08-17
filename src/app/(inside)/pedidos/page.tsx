@@ -1,15 +1,16 @@
 "use client"
 
-
-
 import { OrderType } from '@/types/order'
 import styles from './page.module.css'
-import { ChangeEvent, SetStateAction, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
 import { AiOutlineSearch } from 'react-icons/ai'
 import { api } from '@/libs/api'
 import { OrderItem } from '@/components/OrderItem'
 import { orderStatusType } from '@/types/orderStatus'
+
+
+import { SkeletonBox } from '@/components/skeletonBox'
 
 export default function Page() {
 
@@ -18,13 +19,16 @@ export default function Page() {
 
     const [orders, setOrders] = useState<OrderType[]>([])
     const [filteredOrders, setFilteredOrders] = useState<OrderType[]>([])
+    const [loading, setLoading] = useState(false)
 
     const getOrders = async () => {
+        setLoading(true)
         setInputSearch('')
         setOrders([])
 
         const orderList: OrderType[] = await api.getOrders()
         setOrders(orderList)
+        setLoading(false)
     }
 
     const changeStatus = async (id: number, newStatus: orderStatusType) => {
@@ -79,10 +83,26 @@ export default function Page() {
             </div>
 
             <div className={styles.orders}>
-                {filteredOrders.map((item) => (
-                    <OrderItem key={item.id} item={item} onChangeStatus={changeStatus}/>
-                ))}
+                {!loading &&
+                    filteredOrders.map((item) => (
+                        <OrderItem key={item.id} item={item} onChangeStatus={changeStatus}/>
+                    ))
+                }
             </div>
+
+            {loading &&
+                    <div className={styles.skeletonArea}>
+                        <SkeletonBox />
+                        <SkeletonBox />
+                        <SkeletonBox />
+                        <SkeletonBox />
+                        <SkeletonBox />
+                        <SkeletonBox />
+                    </div>
+                    
+                }
+
+
         </div>
     )
 }
