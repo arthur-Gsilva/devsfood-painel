@@ -19,6 +19,8 @@ export default function Produtos () {
     const [showDelete, setShowDelete] = useState<boolean>(false)
     const [productToDelete, setProductToDelete] = useState<Product>()
     const [modal, setModal] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
+    const [productToEdit, setProductToEdit] = useState<Product>()
 
     const getProducts = async () => {
         setLoading(true)
@@ -27,8 +29,10 @@ export default function Produtos () {
         setLoading(false)
     }
 
-    const editProduct = () => {
+    const editProduct = (product: Product) => {
         setModal(true)
+        setIsEdit(true)
+        setProductToEdit(product)
     }
 
     const deleteProduct = (product: Product) => {
@@ -53,7 +57,7 @@ export default function Produtos () {
             <div className={styles.productHeader}>
                 <h2>Produtos</h2>
 
-                <button>Novo produto</button>
+                <button onClick={() => setModal(true)}>Novo produto</button>
             </div>
 
             <div className={styles.productsContent}>
@@ -97,6 +101,10 @@ export default function Produtos () {
             {modal &&
                 <ProductModal 
                     setClose={setModal}
+                    isEdit={isEdit}
+                    setIsEdit={setIsEdit}
+                    item={productToEdit}
+                    setItem={setProductToEdit}
                 />
             }
             
