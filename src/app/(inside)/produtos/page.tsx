@@ -95,7 +95,9 @@ export default function Produtos () {
             />
 
             {modal &&
-                <ProductModal />
+                <ProductModal 
+                    setClose={setModal}
+                />
             }
             
         </div>
