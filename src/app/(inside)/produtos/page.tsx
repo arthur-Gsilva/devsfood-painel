@@ -8,6 +8,7 @@ import { api } from '@/libs/api'
 import { ProductTableItem } from '@/components/ProductTableItem'
 import { DeleteArea } from '@/components/DeleteArea'
 import { SkeletonTable } from '@/components/Skeletons/skeletonTable'
+import { ProductModal } from '@/components/ProductModal'
 
 export default function Produtos () {
 
@@ -17,6 +18,7 @@ export default function Produtos () {
 
     const [showDelete, setShowDelete] = useState<boolean>(false)
     const [productToDelete, setProductToDelete] = useState<Product>()
+    const [modal, setModal] = useState(false)
 
     const getProducts = async () => {
         setLoading(true)
@@ -26,7 +28,7 @@ export default function Produtos () {
     }
 
     const editProduct = () => {
-
+        setModal(true)
     }
 
     const deleteProduct = (product: Product) => {
@@ -91,6 +93,11 @@ export default function Produtos () {
                 setShow={setShowDelete}
                 confirmDelete={confirmDelete}
             />
+
+            {modal &&
+                <ProductModal />
+            }
+            
         </div>
     )
 }

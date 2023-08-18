@@ -31,7 +31,7 @@ export const ProductTableItem = ({item, onEdit, onDelete}: Props) => {
                 {item.category.name}
             </td>
             <td className={styles.buttons}>
-                <button className={styles.editBtn}>
+                <button className={styles.editBtn} onClick={() => onEdit(item)}>
                     <HiOutlinePencil />
                 </button>
                 <button className={styles.deleteBtn}>
